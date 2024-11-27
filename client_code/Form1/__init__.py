@@ -8,7 +8,11 @@ from anvil.tables import app_tables
 
 class Form1(Form1Template):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
+  def button_anmelden_click(self, **event_args):
+    erg = anvil.server.call('get_account_information', self.text_box_username.text, self.text_box_pw.text)
+    print(f"{erg}")
+    self.label_ergebnis.text = f"{erg}"
+    pass
+

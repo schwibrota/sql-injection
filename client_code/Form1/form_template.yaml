@@ -16,6 +16,11 @@ components:
     name: text_box_pw
     properties: {}
     type: TextBox
+  - event_bindings: {click: button_anmelden_click}
+    layout_properties: {grid_position: 'YDQLLN,XRBVDO'}
+    name: button_anmelden
+    properties: {align: left, bold: true, text: ANMELDEN}
+    type: Button
   - layout_properties: {grid_position: 'QSBHAF,UWEUQB'}
     name: label_ergebnis
     properties: {text: 'ERGEBNIS:'}
