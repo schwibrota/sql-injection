@@ -10,7 +10,6 @@ import sqlite3
 def get_account_information(username, password):
   conn = sqlite3.connect(data_files['sqlinject.db'])
   cursor = conn.cursor()
-  res = list(cursor.execute(f"SELECT username, AccountNo FROM Users WHERE username = '{username}' AND password = '{password}'"))
+  use = list(cursor.execute(f"SELECT Users.AccountNo, Users.username, Users.password, Balances.balance FROM Users JOIN Balances ON Users.AccountNo = Balances.AccountNo WHERE Users.username = '{username}' AND Users.password = '{password}';"))
   conn.close()
-  print(res)
-  return res
+  return use

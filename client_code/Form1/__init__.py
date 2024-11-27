@@ -11,8 +11,8 @@ class Form1(Form1Template):
     self.init_components(**properties)
 
   def button_anmelden_click(self, **event_args):
-    erg = anvil.server.call('get_account_information', self.text_box_username.text, self.text_box_pw.text)
-    print(f"{erg}")
-    self.label_ergebnis.text = f"{erg}"
+    userdata = anvil.server.call('get_account_information', self.text_box_username.text, self.text_box_pw.text)
+    print(f"Userdata: {userdata}")
+    self.label_ergebnis.text = f"Hallo, {userdata[0][1]}! Dein Kontostand beträgt {userdata[0][3]}"
     pass
 
