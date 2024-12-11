@@ -15,7 +15,8 @@ class InputPage(InputPageTemplate):
     if ("checkboxChecked" in properties):
       if (properties["checkboxChecked"]):
         self.check_box_lvl1.checked = "true"
-    self.level = 1
+    if (self.check_box_lvl1.checked != "true"):
+      self.level = 1
     if (self.check_box_lvl1.checked == "true"):
       self.level = 2
     
@@ -47,10 +48,12 @@ class InputPage(InputPageTemplate):
           
       loggedIn = LoggedInPage()
       loggedIn.label_ausgabe.text = anzuzeigendertext
-      open_form(loggedIn, level1ready=True)
+      open_form(loggedIn)
+      
 
     elif (self.level == 2):
-      url = f"?user={self.text_box_username.text}#pw={self.text_box_pw.text}"
+      url = f"?user={self.text_box_username.text}&pw={self.text_box_pw.text}"
+      anvil.open_url(url, new_window=True)
       pass
     else:
       pass
