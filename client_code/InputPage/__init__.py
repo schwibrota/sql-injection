@@ -4,6 +4,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 import re
+import anvil.http
 from ..LoggedInPage import LoggedInPage
 from anvil.tables import app_tables
 
@@ -45,6 +46,7 @@ class InputPage(InputPageTemplate):
           anzuzeigendertext = f"User nicht vorhanden!\nSELECT Users.AccountNo, Users.username, Users.password, Balances.balance FROM Users JOIN Balances ON Users.AccountNo = Balances.AccountNo WHERE Users.username = '{self.text_box_username.text}' AND Users.password = '{self.text_box_pw.text}';"
         else:
           anzuzeigendertext = f"Logged in, but no AccountNo passed\nSELECT Users.AccountNo, Users.username, Users.password, Balances.balance FROM Users JOIN Balances ON Users.AccountNo = Balances.AccountNo WHERE Users.username = '{self.text_box_username.text}' AND Users.password = '{self.text_box_pw.text}';"
+          self.level = 2
           
       loggedIn = LoggedInPage()
       loggedIn.label_ausgabe.text = anzuzeigendertext
@@ -52,8 +54,8 @@ class InputPage(InputPageTemplate):
       
 
     elif (self.level == 2):
-      url = f"?user={self.text_box_username.text}&pw={self.text_box_pw.text}"
-      anvil.open_url(url, new_window=True)
+      userdata = anvil.server.call('get_account_information', self.text_box_username.text, self.text_box_pw.text)
+      resp = anvil.http.request(url=f"https://starry-vast-aardwolf.anvil.app/{userdata[0]}%20{userdata[1]}%20{userdata[2]}%20{userdata[3]}")
       pass
     else:
       pass
