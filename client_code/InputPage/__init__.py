@@ -55,7 +55,13 @@ class InputPage(InputPageTemplate):
 
     elif (self.level == 2):
       userdata = anvil.server.call('get_account_information', self.text_box_username.text, self.text_box_pw.text)
-      resp = anvil.http.request(url=f"https://starry-vast-aardwolf.anvil.app/{userdata[0]}%20{userdata[1]}%20{userdata[2]}%20{userdata[3]}")
+      resp = anvil.http.request(url="",
+                    method="GET",
+                    headers= {
+                      "Authentication": f"{userdata[0]}",
+                    })
+      print(f"{resp.content_type}: RESPONSE")
+
       pass
     else:
       pass
