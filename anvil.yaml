@@ -14,7 +14,10 @@ db_schema:
       type: string
     server: full
     title: Files
-dependencies: []
+dependencies:
+- dep_id: dep_zkwsewb1wh8ni
+  resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
+  version: {version_tag: v3.1.0}
 name: SQL-Injection
 package_name: SQL_Injection
 renamed: true
