@@ -5,8 +5,6 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from ..InputPage import InputPage
-from ..LoggedInPage import LoggedInPage
-from ..ErrorPage import ErrorPage
 
 class InitPage(InitPageTemplate):
   def __init__(self, **properties):
