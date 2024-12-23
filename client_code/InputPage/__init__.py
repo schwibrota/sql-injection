@@ -7,7 +7,10 @@ import re
 import anvil.http
 from ..LoggedInPage import LoggedInPage
 from anvil.tables import app_tables
+from anvil_extras import routing
 
+@routing.default_template
+@routing.route('')
 
 class InputPage(InputPageTemplate):
   def __init__(self, **properties):
@@ -54,13 +57,7 @@ class InputPage(InputPageTemplate):
       
 
     elif (self.level == 2):
-      userdata = anvil.server.call('get_account_information', self.text_box_username.text, self.text_box_pw.text)
-      resp = anvil.http.request(url="",
-                    method="GET",
-                    headers= {
-                      "Authentication": f"{userdata[0]}",
-                    })
-      print(f"{resp.content_type}: RESPONSE")
+      
 
       pass
     else:

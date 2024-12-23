@@ -4,8 +4,9 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from anvil_extras import routing
 
-
+@routing.route('LOGGEDIN', url_keys=["id", routing.ANY])
 
 class LoggedInPage(LoggedInPageTemplate):
   def __init__(self, **properties):

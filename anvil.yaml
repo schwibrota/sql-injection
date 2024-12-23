@@ -33,5 +33,5 @@ services:
 - client_config: {}
   server_config: {file_table: files}
   source: /runtime/services/anvil/files.yml
-startup: {module: InputPage, type: form}
+startup: {module: InitPage, type: form}
 startup_form: null
